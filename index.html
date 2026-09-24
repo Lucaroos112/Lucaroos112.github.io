@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luca Roos · Systeembeheerder</title>
+  <meta name="description" content="Luca Roos, systeembeheerder gespecialiseerd in Mobile Device Management met Microsoft Intune en Ivanti EPMM. Duaal student HBO-ICT aan de Hogeschool Utrecht.">
+  <meta property="og:title" content="Luca Roos · Systeembeheerder">
+  <meta property="og:description" content="Mobile Device & Application Management met Microsoft Intune en Ivanti EPMM.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b5bd7'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='28' fill='white'%3ELR%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfbfa;
+      --surface: #ffffff;
+      --text: #16181d;
+      --muted: #5d6470;
+      --line: #e6e7ea;
+      --accent: #2b5bd7;
+      --accent-soft: #eaf0ff;
+      --chip: #f1f2f4;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f1115;
+        --surface: #161920;
+        --text: #eceef2;
+        --muted: #9aa1ad;
+        --line: #262a33;
+        --accent: #7ea2ff;
+        --accent-soft: #1b2440;
+        --chip: #1d2129;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f1115;
+      --surface: #161920;
+      --text: #eceef2;
+      --muted: #9aa1ad;
+      --line: #262a33;
+      --accent: #7ea2ff;
+      --accent-soft: #1b2440;
+      --chip: #1d2129;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+    header.top {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .brand { font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+    nav { display: flex; gap: 20px; align-items: center; }
+    nav a { color: var(--muted); font-size: 14px; font-weight: 500; }
+    nav a:hover { color: var(--text); text-decoration: none; }
+    .theme-btn {
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      width: 34px; height: 34px; border-radius: 8px; cursor: pointer; display: grid; place-items: center;
+    }
+    .theme-btn svg { width: 16px; height: 16px; }
+
+    .hero { padding: 88px 0 56px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; background: var(--surface);
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #22a55b; }
+    h1 { font-size: clamp(36px, 7vw, 56px); line-height: 1.1; letter-spacing: -0.03em; margin: 20px 0 12px; }
+    .role { font-size: clamp(18px, 3vw, 22px); color: var(--muted); margin: 0 0 24px; font-weight: 500; }
+    .intro { font-size: 17px; max-width: 620px; margin: 0 0 32px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 15px;
+      border: 1px solid var(--line); color: var(--text); background: var(--surface);
+    }
+    .btn:hover { text-decoration: none; border-color: var(--muted); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    :root[data-theme="dark"] .btn.primary { color: #0f1115; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #0f1115; } }
+    .btn svg { width: 18px; height: 18px; }
+
+    section { padding: 48px 0; border-top: 1px solid var(--line); }
+    h2 {
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--muted); font-weight: 600; margin: 0 0 28px;
+    }
+
+    .job { display: grid; grid-template-columns: 150px 1fr; gap: 8px 24px; padding-bottom: 32px; }
+    .job:last-child { padding-bottom: 0; }
+    .when { color: var(--muted); font-size: 14px; padding-top: 2px; }
+    .job h3 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+    .org { color: var(--muted); margin: 2px 0 12px; font-size: 15px; }
+    .job ul { margin: 0; padding-left: 18px; }
+    .job li { margin: 4px 0; }
+    .job li::marker { color: var(--accent); }
+
+    .skills { display: grid; gap: 24px; }
+    .skills h3 { font-size: 15px; margin: 0 0 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+    .chips li { background: var(--chip); border-radius: 8px; padding: 5px 12px; font-size: 14px; font-weight: 500; }
+    .chips li.key { background: var(--accent-soft); color: var(--accent); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+    .card h3 { margin: 0 0 4px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .comp { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+    .comp .card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .comp .card h3::before {
+      content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); flex: none;
+    }
+
+    .contact p { max-width: 560px; margin: 0 0 24px; font-size: 17px; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 600px) {
+      nav a { display: none; }
+      .hero { padding: 56px 0 40px; }
+      .job { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#">Luca Roos</a>
+      <nav>
+        <a href="#ervaring">Ervaring</a>
+        <a href="#competenties">Competenties</a>
+        <a href="#vaardigheden">Vaardigheden</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-btn" id="themeBtn" aria-label="Wissel licht of donker thema">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <span class="eyebrow"><span class="dot"></span>Nieuwerkerk aan den IJssel, Nederland</span>
+      <h1>Luca Roos</h1>
+      <p class="role">Systeembeheerder · Mobile Device &amp; Application Management</p>
+      <p class="intro">
+        Ik beheer en beveilig mobiele apparaten en apps met Microsoft Intune en Ivanti EPMM.
+        Mijn praktijkervaring als werkplekbeheerder combineer ik met de duale opleiding HBO-ICT
+        aan de Hogeschool Utrecht. Ik werk nauwkeurig, denk vooruit en maak processen graag
+        slimmer en veiliger.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#contact">Neem contact op</a>
+        <a class="btn" href="https://github.com/Lucaroos112" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <section id="ervaring">
+      <h2>Werkervaring</h2>
+
+      <div class="job">
+        <div class="when">apr 2026 – heden</div>
+        <div>
+          <h3>Systeembeheerder MDM &amp; MAM</h3>
+          <p class="org">Justitiële ICT Organisatie</p>
+          <ul>
+            <li>Beheer en configuratie van Microsoft Intune voor Mobile Device Management (MDM) en Mobile Application Management (MAM).</li>
+            <li>Beheer van mobiele apparaten met Ivanti Endpoint Manager Mobile (EPMM, voorheen MobileIron).</li>
+            <li>Inrichten en onderhouden van configuratie- en compliancebeleid voor laptops, smartphones en tablets.</li>
+            <li>Uitrollen van applicaties en beheren van app-beveiligingsbeleid.</li>
+            <li>Analyseren en oplossen van incidenten rond apparaat- en applicatiebeheer.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">sep 2023 – mrt 2026</div>
+        <div>
+          <h3>Werkplekbeheerder</h3>
+          <p class="org">Justitiële ICT Organisatie</p>
+          <ul>
+            <li>Gebruiksklaar maken, installeren en configureren van laptops, smartphones, tablets en randapparatuur.</li>
+            <li>Beheer van ICT-middelen en assetmanagement in TOPdesk.</li>
+            <li>Schakel tussen ICT-beheer en leveranciers bij leveringen.</li>
+            <li>Ondersteunen van gebruikers bij ICT-vragen, op afstand en op locatie.</li>
+            <li>Actieve bijdrage aan het optimaliseren van logistieke ICT-processen.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="competenties">
+      <h2>Competenties</h2>
+      <div class="comp">
+        <div class="card">
+          <h3>Nauwkeurig</h3>
+          <p>Ik werk zorgvuldig en gestructureerd. Beleid, configuraties en registraties kloppen, want een fout raakt direct veel gebruikers.</p>
+        </div>
+        <div class="card">
+          <h3>Security-bewust</h3>
+          <p>Ik denk bij elke wijziging na over veiligheid en compliance. Dat is essentieel in een omgeving met gevoelige gegevens.</p>
+        </div>
+        <div class="card">
+          <h3>Analytisch en probleemoplossend</h3>
+          <p>Ik zoek de oorzaak van een storing, niet alleen het symptoom, en los die structureel op.</p>
+        </div>
+        <div class="card">
+          <h3>Proactief en procesgericht</h3>
+          <p>Ik signaleer knelpunten vroeg en denk mee over hoe processen slimmer en efficiënter kunnen.</p>
+        </div>
+        <div class="card">
+          <h3>Klant- en servicegericht</h3>
+          <p>De gebruiker staat centraal. Ik leg technische zaken helder uit, op afstand en op locatie.</p>
+        </div>
+        <div class="card">
+          <h3>Teamspeler</h3>
+          <p>Ik communiceer duidelijk, stem goed af met collega's en leveranciers en deel mijn kennis.</p>
+        </div>
+        <div class="card">
+          <h3>Verantwoordelijk</h3>
+          <p>Ik neem eigenaarschap over mijn werk en maak af waar ik aan begin.</p>
+        </div>
+        <div class="card">
+          <h3>Leergierig</h3>
+          <p>Ik combineer werk en HBO-studie en verdiep me continu in nieuwe technieken en tools.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="vaardigheden">
+      <h2>Vaardigheden</h2>
+      <div class="skills">
+        <div>
+          <h3>Endpoint- en mobile management</h3>
+          <ul class="chips">
+            <li class="key">Microsoft Intune</li>
+            <li class="key">MDM</li>
+            <li class="key">MAM</li>
+            <li class="key">Ivanti EPMM (MobileIron)</li>
+            <li>Compliancebeleid</li>
+            <li>Imaging &amp; deployment</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Platformen</h3>
+          <ul class="chips">
+            <li>Windows 10 &amp; 11</li>
+            <li>Microsoft 365</li>
+            <li>Active Directory</li>
+            <li>Azure</li>
+            <li>Netwerken (LAN / WAN / wifi)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Hardware en servicemanagement</h3>
+          <ul class="chips">
+            <li>Dell</li>
+            <li>Lenovo</li>
+            <li>HP</li>
+            <li>Fujitsu</li>
+            <li>Apple</li>
+            <li>TOPdesk</li>
+            <li>Assetmanagement &amp; lifecyclebeheer</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="opleiding">
+      <h2>Opleiding en talen</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>HBO-ICT (duaal)</h3>
+          <p>Hogeschool Utrecht · in opleiding</p>
+        </div>
+        <div class="card">
+          <h3>HAVO</h3>
+          <p>Emmauscollege Rotterdam · 2024</p>
+        </div>
+        <div class="card">
+          <h3>Talen</h3>
+          <p>Nederlands (moedertaal) · Engels (goed)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>Wil je sparren over endpointmanagement, Intune of de moderne werkplek? Neem gerust contact op via GitHub.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/Lucaroos112" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          GitHub
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year">2026</span> Luca Roos</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved) root.dataset.theme = saved;
+    } catch (e) {}
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      const dark = root.dataset.theme
+        ? root.dataset.theme === 'dark'
+        : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
